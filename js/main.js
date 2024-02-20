@@ -1,77 +1,68 @@
-//console.log("js has been loaded"); /*allows u to play a string/argument*/
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeBtn = document.getElementById('closeBtn');
 
+// "event name", callback function
+menuBtn.addEventListener('click', () => {
+  // console.log("cllllllicked!!");
+  mobileMenu.classList.add('active');
+}); // end of menuBtn click
 
-const menuBtn= document.getElementById("menuBtn")
-const mobileMenu= document.getElementById("mobileMenu")
-const closeBtn= document.getElementById("closeBtn")
+closeBtn.addEventListener('click', () => {
+  // console.log("cllllllicked!!");
+  mobileMenu.classList.remove('active');
+}); // end of menuBtn click
 
-//"event name", callback function
-menuBtn.addEventListener("click", function(){
-    //console.log("clicked!")
-    mobileMenu.classList.add("active")
-});//end of Btn click
+const displayCategory = (category, properties) => {
+  // console.log({category});
+  const sectionElement = document.createElement('section');
+  sectionElement.classList.add('category');
 
-closeBtn.addEventListener("click", function(){
-    //console.log("clicked!")
-    mobileMenu.classList.remove("active")
-});//end of Btn click
+  const sectionTitle = document.createElement('h2');
+  sectionTitle.textContent = category.label.plural;
 
-//array of objects
+  sectionElement.appendChild(sectionTitle);
 
-//function renderProperties(properties) {
-    properties.forEach((room) => {
-        const roomInfo = document.createElement("article");
-      
-        const roomNameElement = document.createElement("h3");
-        roomNameElement.textContent = room.name;
-      
-        const roomPriceElement = document.createElement("p");
-        roomPriceElement.textContent = `Price: $${room.price}`;
-      
-        const roomTypeElement = document.createElement("p");
-        roomTypeElement.textContent = `Type: ${room.type}`;
-      
-        const roomGuestsElement = document.createElement("p");
-        roomGuestsElement.textContent = `Guests: ${room.guests}`;
-      
-        const roomDescriptionElement = document.createElement("p");
-        roomDescriptionElement.textContent = room.description;
-      
-        roomInfo.appendChild(roomNameElement);
-        roomInfo.appendChild(roomPriceElement);
-        roomInfo.appendChild(roomTypeElement);
-        roomInfo.appendChild(roomGuestsElement);
-        roomInfo.appendChild(roomDescriptionElement);
-      
-        document.body.appendChild(roomInfo);
-      });//end of forEach
-}//end of renderProperties
+  // document.body.appendChild(sectionElement);
+
+  // console.log(category.label.singular)
+  // 1. filter properties
+  const filteredProperties = properties.filter((property) => {
+    return category.label.singular === property.type;
+  });
+
+  // console.log({filteredProperties});
+  filteredProperties.forEach((property) => {
+    const articleElement = document.createElement('article');
+    articleElement.classList.add('property');
+
+    const propertyHtml = `
+    <h3 class="property--title">${property.name}</h3>
+    <p class="property--description">${property.description}</p>
+    <p class="property--price">${property.price}</p> 
+    `;
+    articleElement.innerHTML = propertyHtml;
+    sectionElement.appendChild(articleElement);
+    // const propertyTitle= document.createElement('h3');
+    // propertyTitle.classList.add('property--title');
+  });
+  document.body.appendChild(sectionElement);
+  // 2. loop and append properties
+}; // end of displayCategory
 
 Promise.all([
   // fetch 1
-  fetch('properties.json').then(response => response.json()),
+  fetch('js/properties.json').then((response) => response.json()),
   // fetch 2
-  fetch('categories.json').then(response => response.json())
-  ])
+  fetch('js/categories.json').then((response) => response.json()),
+])
   .then(([properties, categories]) => {
-    //console.log({properties})
-    //console.log({categories})
-    categories.forEach(category => {
+    // console.log({properties});
+    // console.log({categories});
+    categories.forEach((category) => {
       displayCategory(category, properties);
     });
   })
   .catch((error) => {
-    console.error("There was a problem fetching the data:", error);
+    console.error('There was a problem fetching the data:', error);
   });
-
-  const displayCategory =(category, properties)=>{
-      console.log("displaying category")
-      const sectionElement = document.createElement('section')
-
-      const sectionTitle=document.createElement('h2');
-      sectionTitle
-      
-      sectionElement.appendChild(sectionTitle);
-
-      document.body.appendChild(sectionElement);
-  } //end of dispalyCategory 
