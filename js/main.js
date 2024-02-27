@@ -1,6 +1,7 @@
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const closeBtn = document.getElementById('closeBtn');
+const contentDiv = document.getElementById('content');
 
 // "event name", callback function
 menuBtn.addEventListener('click', () => {
@@ -46,7 +47,7 @@ const displayCategory = (category, properties) => {
     // const propertyTitle= document.createElement('h3');
     // propertyTitle.classList.add('property--title');
   });
-  document.body.appendChild(sectionElement);
+  contentDiv.appendChild(sectionElement);
   // 2. loop and append properties
 }; // end of displayCategory
 
