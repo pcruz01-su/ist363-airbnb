@@ -1,34 +1,7 @@
-@use './header';
-@use './footer';
-$color__orange: #d74100;
-$font_primary: Arial, sans-serif;
+@use './abstracts/vars';
+@use './base';
+@use './layout';
 
-html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-li,
-button {
-  margin: 0;
-  padding: 0;
-  font: inherit;
-}
-ul,
-li {
-  list-style: none;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  background-color: $color__orange;
-}
 :root {
   --airbnb-pink: #ff385c;
 }
@@ -46,13 +19,13 @@ nav {
     li {
       a {
         font-weight: bold;
-        font-family: $font_primary;
+        font-family: vars.$font_primary;
         font-size: 1rem;
         color: black;
         text-decoration: none;
         &:hover,
         &:focus {
-          color: $color__orange;
+          color: vars.$color_orange;
           text-decoration: underline;
         }
       }
