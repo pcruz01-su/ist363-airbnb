@@ -1,5 +1,33 @@
 @use '../abstracts/vars';
 
+.btn {
+  background-color: grey;
+  color: white;
+  padding: 1rem;
+  font-family: vars.$font-primary;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  &--primary {
+    background-color: vars.$color_primary;
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+  }
+  &--delete {
+    background-color: red;
+  }
+  &--small {
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+}
+
 .btn-ui {
   padding: 1rem;
   background-color: transparent;
