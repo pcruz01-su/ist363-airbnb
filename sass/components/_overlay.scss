@@ -1,0 +1,13 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: limegreen;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  z-index: 1000; /*picking a large number you will guarentee it to bring to front*/
+  transition: all 0.5s;
+  &.active {
+    left: 0;
+  }
+}

@@ -1,0 +1,22 @@
+@use '../abstracts/vars';
+
+nav {
+  ul {
+    display: flex;
+    gap: 1rem;
+    li {
+      a {
+        font-weight: bold;
+        font-family: vars.$font_primary;
+        font-size: 1rem;
+        color: black;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          color: vars.$color_orange;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
