@@ -530,15 +530,51 @@ nav ul li a:hover, nav ul li a:focus {
   font-style: italic;
 }
 
+.slider {
+  background-color: lightblue;
+}
+.slider_container {
+  background-color: aquamarine;
+  overflow-x: scroll;
+  padding-left: 1rem;
+}
+@media (min-width: 700px) {
+  .slider_container {
+    padding-left: calc((100% - 700px) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .slider_container {
+    padding-left: calc((100% - 1024px) / 2);
+  }
+}
+@media (min-width: 1140px) {
+  .slider_container {
+    padding-left: calc((100% - 1140px) / 2);
+  }
+}
+.slider_grid {
+  background-color: pink;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 1rem;
+  grid-auto-flow: column;
+}
+.slider_item {
+  background-color: aliceblue;
+  width: 300px;
+  height: 400px;
+}
+
 header {
-  background-color: #ff385c;
   padding: 1rem; /*rem = 2 times the root font size for accesibility reasons*/ /* top, right, bottom , left*/
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-footer {
+.footer {
   background-color: gray;
   padding: 1rem;
 }
